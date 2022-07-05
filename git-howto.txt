@@ -1,0 +1,35 @@
+Following on from Chris's run through of Git!
+
+First, useful links. When pushing to github, you need to enter your username and token, not username and password.
+This is a documented security feature. You will be prompted to create the security token linked to your account
+(takes 30 seconds) but link here: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+
+From the command line
+download git, cd into your favourite directory.
+
+clone repo from github, to your PC
+[adminuser@localhost New-Bank]$ git clone https://github.com/Reece4000/New-Bank.git
+
+checkout main, will tell us that origin/main is up to date (chris any other reason why we do this here?)
+[adminuser@localhost New-Bank]$ git checkout main
+
+Create a new branch to start developing from
+[adminuser@localhost New-Bank]$ git checkout -b ExampleClient-add-comment
+
+Make changes to code in files, check which files have been changed
+[adminuser@localhost New-Bank]$ git status
+
+add files ready to be committed. Note i am committing a single file here, can do 'got add .' for all
+[adminuser@localhost New-Bank]$ git add NewBank/newbank/client/ExampleClient.java
+
+commit changes, ready to push
+[adminuser@localhost New-Bank]$ git commit -m "Test with trivial comment"
+
+the big push! note i've included the output of the command here
+[adminuser@localhost New-Bank]$ git push
+fatal: The current branch ExampleClient-add-comment has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin ExampleClient-add-comment
+
+[adminuser@localhost New-Bank]$ git push --set-upstream origin ExampleClient-add-comment
