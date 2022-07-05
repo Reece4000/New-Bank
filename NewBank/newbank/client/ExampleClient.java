@@ -8,7 +8,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 public class ExampleClient extends Thread{
-	
+
 	private Socket server;
 	private PrintWriter bankServerOut;	
 	private BufferedReader userInput;
@@ -18,7 +18,7 @@ public class ExampleClient extends Thread{
 		server = new Socket(ip,port);
 		userInput = new BufferedReader(new InputStreamReader(System.in)); 
 		bankServerOut = new PrintWriter(server.getOutputStream(), true); 
-		
+
 		bankServerResponceThread = new Thread() {
 			private BufferedReader bankServerIn = new BufferedReader(new InputStreamReader(server.getInputStream())); 
 			public void run() {
@@ -50,7 +50,8 @@ public class ExampleClient extends Thread{
 			}
 		}
 	}
-	
+
+	// starts the example client process
 	public static void main(String[] args) throws UnknownHostException, IOException, InterruptedException {
 		new ExampleClient("localhost",14002).start();
 	}
