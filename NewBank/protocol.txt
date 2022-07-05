@@ -17,3 +17,65 @@ Returns SUCCESS or FAIL
 PAY <Person/Company> <Ammount>
 e.g. PAY John 100
 Returns SUCCESS or FAIL
+
+--------------------------------
+List of proposed requirements 
+FR1	The system shall allow new customers to register
+  FR1.1	New customers shall be required to provide a secure password
+FR1.2	New customers shall be required to provide relevant account details
+  FR1.2.1	Customers shall provide their full name
+  FR1.2.2	Customers shall provide their date of birth
+  FR1.2.3	Customers shall provide their primary address
+FR1.3	New customers shall be assigned a unique customer ID
+FR1.4	Customers shall have a default “Main” account
+  FR 1.4.1	Customers shall be able to change an account to their main account
+	
+FR2	The system shall require user authentication
+FR2.1	A user shall only be authenticated successfully if both their username and password matches the data stored for that user
+FR2.2	IF the user authentication fails, an error should be shown to the user
+	
+	
+FR3	The system shall allow customers to manage their accounts
+FR3.1	The system shall allow customers to create an account
+  FR3.1.1	When creating an account, the system shall require customers to authenticate themselves by providing their login details
+  FR3.1.2	Customers shall be required to provide an account name when creating an account
+  FR3.1.3	The system shall assign all new accounts an opening balance of 0
+  FR3.1.4	The system shall assign all new accounts a unique account ID
+FR3.2	The system shall allow customers to delete an account
+  FR3.2.1	When deleting an account, the system shall require customers to authenticate themselves by providing their login details
+	
+FR4	The system shall support transfer of funds between accounts
+FR4.1	Customers shall be able to move funds between their own accounts
+  FR4.1.1	The user shall be able to enter the command of the transaction they want to make
+  FR4.1.2	The user shall be able to enter the account they want the money to come out of
+  FR4.1.3	The user shall be able to enter the account they want the money to be moved to
+FR4.2	Customers shall be able to move funds to external accounts
+  FR4.2.1	The user shall be able to enter the command of the transaction they want to make
+  FR4.2.2	The user shall be able to enter the account they want the money to come out of
+  FR4.2.3	The user shall be able to enter the name of the person they want to pay
+  FR4.2.4	The user shall be able to enter the amount they want to send
+  FR 4.2.5	The user shall be able to add funds from an external account.
+	
+FR5	The system shall allow customers to manage their accounts
+FR5.1	The system shall allow customers to create an account
+  FR5.1.1	Customers shall be required to provide an account name when creating an account
+  FR5.1.2	The system shall assign all new accounts an opening balance of 0
+  FR5.1.3	The system shall assign all new accounts a unique account ID
+FR5.2	The system shall allow customers to delete an account
+  FR5.2.1	When deleting an account, the system shall require customers to authenticate themselves by providing their login details
+FR5.3	Customers shall be able to view a list of their accounts, along with their current balances
+	
+FR 6.1	The system shall support micro-loans in a market loan market place.
+  FR 6.1.1	Users shall be able to advertise a micro-loan with their own terms and payment conditions
+  FR 6.1.2	Users shall be able to view other advertised micro-loans.
+  FR 6.1.3	Users should be able to accept a micro-loan from another user.
+    FR 6.1.3.1	Accepting a micro-loan shall schedule future payments between users.
+	
+NFR1	User passwords shall be secure
+NFR1.1	User passwords should contain at least 8 characters
+NFR1.2	User passwords should contain at least 1 capital letter
+NFR1.3	User password should contain at least 1 special character
+	
+FR7	The system shall display available options to a user. 
+FR7.1	The system should have help tips for users to view
+FR7.2	The system shall always respond to user input
