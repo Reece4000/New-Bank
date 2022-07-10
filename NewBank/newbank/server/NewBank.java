@@ -13,15 +13,15 @@ public class NewBank {
 	}
 	
 	private void addTestData() {
-		Customer bhagy = new Customer();
+		Customer bhagy = new Customer("bhag");
 		bhagy.addAccount(new Account("Main", 1000.0));
 		customers.put("Bhagy", bhagy);
 		
-		Customer christina = new Customer();
+		Customer christina = new Customer("christi2000");
 		christina.addAccount(new Account("Savings", 1500.0));
 		customers.put("Christina", christina);
 		
-		Customer john = new Customer();
+		Customer john = new Customer("John2022");
 		john.addAccount(new Account("Checking", 250.0));
 		customers.put("John", john);
 	}
@@ -31,10 +31,16 @@ public class NewBank {
 	}
 	
 	public synchronized CustomerID checkLogInDetails(String userName, String password) {
-		if(customers.containsKey(userName)) {
-			return new CustomerID(userName);
+		if (customers.containsKey(userName)) {
+			Customer currentCustomer = customers.get(userName);
+			if (password.equals(currentCustomer.getStoredPassword())) {
+				return new CustomerID(userName);
+			} else {
+				return new CustomerID("Invalid password");
+			}
+		}else{
+			return new CustomerID("Invalid username");
 		}
-		return null;
 	}
 
 	// commands from the NewBank customer are processed in this method

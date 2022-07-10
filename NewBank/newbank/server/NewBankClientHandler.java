@@ -31,8 +31,9 @@ public class NewBankClientHandler extends Thread{
 			out.println("Checking Details...");
 			// authenticate user and get customer ID token from bank for use in subsequent requests
 			CustomerID customer = bank.checkLogInDetails(userName, password);
-			// if the user is authenticated then get requests from the user and process them 
-			if(customer != null) {
+			// if the user is authenticated then get requests from the user and process them
+
+			if(!customer.getKey().contains("Invalid")) {
 				out.println("Log In Successful. What do you want to do?");
 				while(true) {
 					String request = in.readLine();
@@ -42,7 +43,9 @@ public class NewBankClientHandler extends Thread{
 				}
 			}
 			else {
+				out.println(customer.getKey());
 				out.println("Log In Failed");
+				throw new IOException();
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -57,5 +60,4 @@ public class NewBankClientHandler extends Thread{
 			}
 		}
 	}
-
 }
