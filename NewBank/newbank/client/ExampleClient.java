@@ -27,7 +27,8 @@ public class ExampleClient extends Thread{
 						String responce = bankServerIn.readLine();
 						System.out.println(responce);
 						if (responce == null){
-							break;}
+							break;
+						}
 
 					}
 				} catch (IOException e) {
