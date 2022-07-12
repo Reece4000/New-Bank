@@ -37,10 +37,16 @@ public class NewBank {
 		return null;
 	}
 
-	// commands from the NewBank customer are processed in this method
+	/*
+	* commands from the NewBank customer are processed in this method, the string requests
+	* is split up into args which are used if necessary by the function selected by the
+	* user
+	 */
 	public synchronized String processRequest(CustomerID customer, String request) {
+		String[] commands = request.split(" ");
+
 		if(customers.containsKey(customer.getKey())) {
-			switch(request) {
+			switch(commands[0]) {
 			case "SHOWMYACCOUNTS" : return showMyAccounts(customer);
 			default : return "FAIL";
 			}

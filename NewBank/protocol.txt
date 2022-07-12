@@ -79,3 +79,5 @@ NFR1.3	User password should contain at least 1 special character
 FR7	The system shall display available options to a user. 
 FR7.1	The system should have help tips for users to view
 FR7.2	The system shall always respond to user input
+
+FR8	The system shall allow users to enter requests in one line per protocol.txt
