@@ -47,13 +47,36 @@ public class NewBank {
 
 		if(customers.containsKey(customer.getKey())) {
 			switch(commands[0]) {
-			case "SHOWMYACCOUNTS" : return showMyAccounts(customer);
-			default : return "FAIL";
+				case "SHOWMYACCOUNTS" : return showMyAccounts(customer);
+				case "NEWACCOUNT" : return createNewAccount(customer, commands[1]);
+				case "REMOVEACCOUNT" : return deleteAccount(customer, commands[1]);
+				default : return "FAIL";
 			}
 		}
 		return "FAIL";
 	}
-	
+
+	private String createNewAccount(CustomerID customer, String accountName) {
+		if(customers.get(customer.getKey()).getAccount(accountName) == null){
+			Account a = new Account(accountName, 0.00);
+			customers.get(customer.getKey()).addAccount(a);
+			return "SUCCESS";
+		} else {
+			return "FAIL";
+		}
+	}
+
+	private String deleteAccount(CustomerID customer, String accountName){
+		Account toDelete = customers.get(customer.getKey()).getAccount(accountName);
+
+		if(toDelete != null && toDelete.getBalance() == 0.00) {
+			customers.get(customer.getKey()).removeAccount(toDelete);
+			return "SUCCESS";
+		} else {
+			return "FAIL";
+		}
+	}
+
 	private String showMyAccounts(CustomerID customer) {
 		return (customers.get(customer.getKey())).accountsToString();
 	}
