@@ -26,6 +26,10 @@ public class ExampleClient extends Thread{
 					while(true) {
 						String responce = bankServerIn.readLine();
 						System.out.println(responce);
+						if (responce == null){
+							break;
+						}
+
 					}
 				} catch (IOException e) {
 					e.printStackTrace();
