@@ -6,9 +6,11 @@ import java.util.Objects;
 public class Customer {
 	
 	private ArrayList<Account> accounts;
-	
-	public Customer() {
+
+	public String storedPassword;
+	public Customer(String password) {
 		accounts = new ArrayList<>();
+		storedPassword = password;
 	}
 
 	/* Loop through accounts names converting to string
@@ -48,5 +50,9 @@ public class Customer {
 
 	public void removeAccount(Account account) {
 		accounts.remove(account);
+  }  
+
+	public String getStoredPassword() {
+	    return storedPassword;
 	}
 }
