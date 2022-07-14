@@ -12,7 +12,7 @@ public class NewBank {
 	*/
 	final int NEWACCOUNT = 2;
 	final int REMOVEACCOUNT = 2;
-
+	final int MOVE = 4;
 	
 	private NewBank() {
 		customers = new HashMap<>();
@@ -63,6 +63,7 @@ public class NewBank {
 				case "SHOWMYACCOUNTS" : return showMyAccounts(customer);
 				case "NEWACCOUNT" : return createNewAccount(customer, commands);
 				case "REMOVEACCOUNT" : return deleteAccount(customer, commands);
+				case "MOVE" : return moveFunds(customer, commands);
 				default : return "FAIL";
 			}
 		}
@@ -95,6 +96,15 @@ public class NewBank {
 				customers.get(customer.getKey()).removeAccount(toDelete);
 				result = "SUCCESS";
 			}
+		}
+		return result;
+	}
+
+	private String moveFunds(CustomerID customer, String[] command){
+		String result = "FAIL";
+
+		if(checkCommandSize(command, MOVE)){
+			result="SUCCESS";
 		}
 		return result;
 	}
