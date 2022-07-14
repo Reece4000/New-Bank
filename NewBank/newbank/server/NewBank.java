@@ -7,7 +7,7 @@ public class NewBank {
 	private static final NewBank bank = new NewBank();
 	private HashMap<String,Customer> customers;
 
-	/* consts which define the number of arguments to be passed
+	/* CONSTANTS which define the number of arguments to be passed
 	* to a given command
 	*/
 	final int NEWACCOUNT = 2;
