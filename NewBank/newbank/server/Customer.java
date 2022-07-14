@@ -34,7 +34,7 @@ public class Customer {
 	 */
 	public Account getAccount(String accountName){
 		for(Account a : accounts){
-			if(Objects.equals(accountName, a.getName())){
+			if(a.getName().equals(accountName)){
 				return a;
 			}
 		}
