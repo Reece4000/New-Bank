@@ -54,14 +54,14 @@ public class Customer {
 				hasSpecialChar=true;
 			}
 		}
-		if(hasSpecialChar == true && hasSpecialChar == true && hasNumber ==true){
+		boolean isPasswordValid = hasSpecialChar && hasUpperChar && hasNumber;
+                
+		if(isPasswordValid){
 			System.out.println("\nThe Password is Strong.");
 		}{
 			else
                         System.out.println("\nThe Password is Weak.");
 		}
-		
-		
-		return hasSpecialChar && hasUpperChar && hasNumber;
+		return isPasswordValid;
 	}
 }
