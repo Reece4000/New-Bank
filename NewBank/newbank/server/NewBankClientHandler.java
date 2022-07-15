@@ -26,16 +26,26 @@ public class NewBankClientHandler extends Thread{
 			out.println("Enter Username");
 			String userName = in.readLine();
 			// ask for password
-			out.println("Enter Password");
-			String password = in.readLine();
-			out.println("Checking Details...");
-			// authenticate user and get customer ID token from bank for use in subsequent requests
-			CustomerID customer = bank.checkLogInDetails(userName, password);
-			// if the user is authenticated then get requests from the user and process them
-
-			if(!customer.getKey().contains("Invalid")) {
+			boolean logInStatus = false;
+			int attempts = 0;
+			CustomerID customer = new CustomerID ("");
+			while (logInStatus != true && attempts<5) {
+				out.println("Enter Password");
+				String password = in.readLine();
+				out.println("Checking Details...");
+				// authenticate user and get customer ID token from bank for use in subsequent requests
+				customer = bank.checkLogInDetails(userName, password);
+				attempts++;
+				if (!customer.getKey().contains("Invalid")) {
+					logInStatus = true;
+				} else if(customer.getKey().contains("Invalid username")) {
+					break;
+				}
+			}
+				// if the user is authenticated then get requests from the user and process them
+			if (!customer.getKey().contains("Invalid")) {
 				out.println("Log In Successful. What do you want to do?");
-				while(true) {
+				while (true) {
 					String request = in.readLine();
 					System.out.println("Request from " + customer.getKey());
 					String responce = bank.processRequest(customer, request);
@@ -59,5 +69,8 @@ public class NewBankClientHandler extends Thread{
 				Thread.currentThread().interrupt();
 			}
 		}
+	}
+	public void passwordReinput(String password){
+		out.println("Enter Password");
 	}
 }
