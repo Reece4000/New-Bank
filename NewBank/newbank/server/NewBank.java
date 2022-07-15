@@ -100,17 +100,24 @@ public class NewBank {
 		return result;
 	}
 
-	/* Command to move funds from one accounts to another
-	* first get the account objects of the user
-	* Then check that the accounts exists and the amount being
-	* moved is greater than 0, if all ok, proceed with move
+	/* Command to move funds from one personal accounts to
+	* another, first the amount given can be converted to a
+	* double, then get the account objects of the user. if
+	* the accounts exists and the amount being moved is
+	*  greater than 0, proceed.
 	 */
 
 	private String moveFunds(CustomerID customer, String[] command){
 		String result = "FAIL";
+		double amt;
 
 		if(checkCommandSize(command, MOVE)){
-			double amt = Double.parseDouble(command[1]);
+			try {
+				amt = Double.parseDouble(command[1]);
+			} catch (NumberFormatException e){
+				return result;
+			}
+
 			Account accountFrom = customers.get(customer.getKey()).getAccount(command[2]);
 			Account accountTo = customers.get(customer.getKey()).getAccount(command[3]);
 
