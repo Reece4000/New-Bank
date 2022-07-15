@@ -100,11 +100,30 @@ public class NewBank {
 		return result;
 	}
 
+	/* Command to move funds from one accounts to another
+	* first get the account objects of the user
+	* Then check that the accounts exists and the amount being
+	* moved is greater than 0, if all ok, proceed with move
+	 */
+
 	private String moveFunds(CustomerID customer, String[] command){
 		String result = "FAIL";
 
 		if(checkCommandSize(command, MOVE)){
-			result="SUCCESS";
+			double amt = Double.parseDouble(command[1]);
+			Account accountFrom = customers.get(customer.getKey()).getAccount(command[2]);
+			Account accountTo = customers.get(customer.getKey()).getAccount(command[3]);
+
+			if(accountFrom==null | accountTo==null | amt <= 0){
+				return result;
+			}
+
+			if(accountFrom.getBalance() >= amt ){
+				accountFrom.changeBalance(-amt);
+				accountTo.changeBalance(amt);
+
+				result = "SUCCESS";
+			}
 		}
 		return result;
 	}
