@@ -11,7 +11,12 @@ public class Account {
 	}
 
 	public String toString() {
-		return (accountName + ": " + openingBalance);
+		ArrayList listofAccounts = new Arraylist<>;
+
+		listofAccounts.add(accountName);
+		listofAccounts.add(openingBalance);
+
+		return (listofAccounts);
 	}
 
 	public String getName() {
