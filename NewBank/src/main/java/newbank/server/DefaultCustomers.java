@@ -9,7 +9,7 @@ public class DefaultCustomers {
 
     public static HashMap<String, Customer> create() {
         HashMap<String, Customer> customers = new HashMap<>();
-        try (BufferedReader br = new BufferedReader(new FileReader("default-customers.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/default-customers.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
