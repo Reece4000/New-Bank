@@ -72,9 +72,6 @@ public class Customer {
 				hasUpperChar = true;
 			}
 			else if(Character.isDigit(ch)){
-				continue;
-			}
-			else if(Character.isDigit(ch)){
 				hasNumber=true;
 			}
 			else{
