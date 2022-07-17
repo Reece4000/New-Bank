@@ -13,9 +13,13 @@ public class DefaultCustomers {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
-                Customer customer = new Customer(values[1]);
-                customer.addAccount(new Account(values[2], Double.parseDouble(values[3])));
-                customers.put(values[0], customer);
+                String password = values[1];
+                String accountName = values[2];
+                String customerID = values[0];
+                double openingBalance = Double.parseDouble(values[3]);
+                Customer customer = new Customer(password);
+                customer.addAccount(new Account(accountName, openingBalance));
+                customers.put(customerID, customer);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
