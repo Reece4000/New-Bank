@@ -5,7 +5,12 @@ import java.util.HashMap;
 public class NewBank {
 
 	private static final NewBank bank = new NewBank();
+
 	private HashMap<String,Customer> customers;
+
+	public NewBank(HashMap<String, Customer> customers) {
+		this.customers = customers;
+	}
 
 	/* CONSTANTS which define the number of arguments to be passed
 	* to a given command
@@ -14,28 +19,9 @@ public class NewBank {
 	final int REMOVEACCOUNT = 2;
 	final int MOVE = 4;
 	final int PAY = 5;
-	
+
 	private NewBank() {
 		customers = new HashMap<>();
-		addTestData();
-	}
-	
-	private void addTestData() {
-		Customer bhagy = new Customer("bhag");
-		bhagy.addAccount(new Account("Main", 1000.0));
-		customers.put("Bhagy", bhagy);
-		
-		Customer christina = new Customer("christi2000");
-		christina.addAccount(new Account("Savings", 1500.0));
-		customers.put("Christina", christina);
-		
-		Customer john = new Customer("John2022");
-		john.addAccount(new Account("Checking", 250.0));
-		customers.put("John", john);
-	}
-	
-	public static NewBank getBank() {
-		return bank;
 	}
 
 	public synchronized CustomerID checkLogInDetails(String userName, String password) {
@@ -51,9 +37,6 @@ public class NewBank {
 				return new CustomerID("Invalid username");
 			}
 		}
-
-
-
 
 	/*
 	* commands from the NewBank customer are processed in this method. the string request
