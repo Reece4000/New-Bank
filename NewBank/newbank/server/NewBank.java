@@ -13,6 +13,7 @@ public class NewBank {
 	final int NEWACCOUNT = 2;
 	final int REMOVEACCOUNT = 2;
 	final int MOVE = 4;
+	final int PAY = 5;
 	
 	private NewBank() {
 		customers = new HashMap<>();
@@ -64,6 +65,7 @@ public class NewBank {
 				case "NEWACCOUNT" : return createNewAccount(customer, commands);
 				case "REMOVEACCOUNT" : return deleteAccount(customer, commands);
 				case "MOVE" : return moveFunds(customer, commands);
+				case "PAY" : return moveFunds(customer, commands);
 				default : return "FAIL";
 			}
 		}
@@ -100,47 +102,61 @@ public class NewBank {
 		return result;
 	}
 
-	/* Command to move funds from one personal accounts to
-	* another, first the amount given can be converted to a
+	/* Command to move funds from one accounts to
+	* another, first check if the amount given can be converted to a
 	* double, then get the account objects of the user. if
 	* the accounts exists and the amount being moved is
-	*  greater than 0, proceed.
+	*  greater than 0, proceed. If the moveFunds function is used with
+	* PAY, it will get the payee's account details, if used with MOVE
+	* it will get the customers account details.
 	 */
-
 	private String moveFunds(CustomerID customer, String[] command){
 		String result = "FAIL";
-		double amt;
+		double amountToTransfer;
+		Account accountTo = null;
+		Account accountFrom = customers.get(customer.getKey()).getAccount(command[2]);
 
-		if(checkCommandSize(command, MOVE)){
-			try {
-				amt = Double.parseDouble(command[1]);
-			} catch (NumberFormatException e){
-				return result;
+		try {
+			amountToTransfer = Double.parseDouble(command[1]);
+		} catch (NumberFormatException e){
+			return result;
+		}
+
+		if(command[0].equals("MOVE")) {
+			if (checkCommandSize(command, MOVE)) {
+				accountTo = customers.get(customer.getKey()).getAccount(command[3]);
 			}
-
-			Account accountFrom = customers.get(customer.getKey()).getAccount(command[2]);
-			Account accountTo = customers.get(customer.getKey()).getAccount(command[3]);
-
-			if(accountFrom==null | accountTo==null | amt <= 0){
-				return result;
-			}
-
-			if(accountFrom.getBalance() >= amt ){
-				accountFrom.changeBalance(-amt);
-				accountTo.changeBalance(amt);
-
-				result = "SUCCESS";
+		} else if(command[0].equals("PAY")) {
+			if (checkCommandSize(command, PAY)) {
+				Customer payee = customers.get(command[3]);
+				accountTo = payee.getAccount(command[4]);
 			}
 		}
+
+		// actually move the funds here
+		if(doTransaction(accountFrom, accountTo, amountToTransfer))
+			result = "SUCCESS";
+
 		return result;
 	}
 
-	private boolean checkCommandSize(String[] command, int sizeof){
-		if(command.length == sizeof){
-			return true;
-		} else {
-			return false;
+	// private function to actually move funds between two accounts. Returns Boolean
+	private boolean doTransaction(Account accountFromName, Account accountToName, double amount){
+		boolean bool = false;
+
+		if(!(accountFromName==null || accountToName==null || amount <= 0)) {
+			if (accountFromName.getBalance() >= amount) {
+
+				accountFromName.changeBalance(-amount);
+				accountToName.changeBalance(amount);
+				bool = true;
+			}
 		}
+		return bool;
+	}
+
+	private boolean checkCommandSize(String[] command, int sizeof){
+		return command.length == sizeof;
 	}
 
 	private String showMyAccounts(CustomerID customer) {

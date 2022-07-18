@@ -3,17 +3,15 @@ package newbank.server;
 public class Account {
 
 	private String accountName;
-	private double openingBalance;
-	private double currentBalance;
+	private double accountBalance;
 
 	public Account(String accountName, double openingBalance) {
 		this.accountName = accountName;
-		this.openingBalance = openingBalance;
-		this.currentBalance = openingBalance;
+		this.accountBalance = openingBalance;
 	}
 
 	public String toString() {
-		return (accountName + ": " + currentBalance);
+		return (accountName + ": " + accountBalance);
 	}
 
 	public String getName() {
@@ -21,10 +19,10 @@ public class Account {
 	}
 
 	public double getBalance() {
-		return this.currentBalance;
+		return this.accountBalance;
 	}
 
 	public void changeBalance(double amount){
-		this.currentBalance += amount;
+		this.accountBalance += amount;
 	}
 }
