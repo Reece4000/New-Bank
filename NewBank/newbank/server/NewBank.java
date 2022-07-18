@@ -36,19 +36,23 @@ public class NewBank {
 	public static NewBank getBank() {
 		return bank;
 	}
-	
+
 	public synchronized CustomerID checkLogInDetails(String userName, String password) {
-		if (customers.containsKey(userName)) {
-			Customer currentCustomer = customers.get(userName);
-			if (password.equals(currentCustomer.getStoredPassword())) {
-				return new CustomerID(userName);
+
+			if (customers.containsKey(userName)) {
+				Customer currentCustomer = customers.get(userName);
+				if (password.equals(currentCustomer.getStoredPassword())) {
+					return new CustomerID(userName);
+				} else {
+					return new CustomerID("Invalid password");
+				}
 			} else {
-				return new CustomerID("Invalid password");
+				return new CustomerID("Invalid username");
 			}
-		}else{
-			return new CustomerID("Invalid username");
 		}
-	}
+
+
+
 
 	/*
 	* commands from the NewBank customer are processed in this method. the string request
