@@ -71,7 +71,7 @@ public class Customer {
 			if(Character.isUpperCase(ch)){
 				hasUpperChar = true;
 			}
-			else if(Character.isDigit(ch)){
+			else if(Character.isLowerCase(ch)){
 				continue;
 			}
 			else if(Character.isDigit(ch)){
