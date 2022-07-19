@@ -50,7 +50,7 @@ public class Customer {
 
 	public void removeAccount(Account account) {
 		accounts.remove(account);
-  }  
+  	}
 
 	public String getStoredPassword() {
 	    return storedPassword;
