@@ -1,15 +1,15 @@
 package newbank.server;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 
 public class DefaultCustomers {
 
     public static HashMap<String, Customer> create() {
         HashMap<String, Customer> customers = new HashMap<>();
-        try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/default-customers.txt"))) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(DefaultCustomers.class.getResourceAsStream("default-customers.txt")))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
