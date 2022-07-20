@@ -1,7 +1,6 @@
 package newbank.server;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class Customer {
 	
@@ -85,10 +84,9 @@ public class Customer {
                 
 		if(isPasswordValid){
 			System.out.println("\nThe Password is Strong.");
+		}else{
+			System.out.println("\nThe Password is Weak.");
 		}
-			else
-				System.out.println("\nThe Password is Weak.");
-
 		return isPasswordValid;
 	}
 }
