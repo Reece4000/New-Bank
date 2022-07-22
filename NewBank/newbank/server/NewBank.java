@@ -17,10 +17,10 @@ public class NewBank {
 	
 	private NewBank() {
 		customers = new HashMap<>();
-//		addTestData();
+//	addTestData();
 	}
 	
-/*	private void addTestData() {
+/*private void addTestData() {
 		Customer bhagy = new Customer("bhag");
 		bhagy.addAccount(new Account("Main", 1000.0));
 		customers.put("Bhagy", bhagy);
@@ -32,8 +32,7 @@ public class NewBank {
 		Customer john = new Customer("John2022");
 		john.addAccount(new Account("Checking", 250.0));
 		customers.put("John", john);
-	}
-*/
+	}*/
 	public static NewBank getBank() {
 		return bank;
 	}

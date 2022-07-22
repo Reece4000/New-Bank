@@ -25,20 +25,20 @@ public class NewBankClientHandler extends Thread {
 		try {
 			out.println("Would you like to create a new user? (y/n)");
 			createAccount = in.readLine();
-			if (createAccount == "y") {
+			if (createAccount.equals("y")) {
 				out.println("please enter your full name");
 				String customerFullName = in.readLine();
 
 
 				//Customer crear un customer, con un metodo   customer.assignPassword   por decir algo. este metodo sera creado en la clase customer."
-				System.out.println("Enter password :");
+				out.println("Enter password :");
 				String pass = in.readLine();
-				if (pass.matches(".*[0-9]{1,}.*") && pass.matches(".*[@#$]{1,}.*") && pass.length() >= 6 && pass.length() <= 20) {
-					System.out.println("password updated");
+				if (pass.matches(".*[0-9]{1,}.*") && pass.matches(".*[=%&*?_@#$]{1,}.*") && pass.length() >= 6 && pass.length() <= 20) {
+					out.println("password updated");
 				} else {
-					System.out.println("It is not a valid password, please input a different password");
+					out.println("It is not a valid password, please input a different password");
 				}
-				System.out.println("please enter a contact email");
+				out.println("please enter a contact email");
 				String newUserEmail = in.readLine();
 				out.println("please enter your date of birth (dd mmm yyyy)");
 				String newUserDOB = in.readLine();
@@ -46,7 +46,10 @@ public class NewBankClientHandler extends Thread {
 				String newUserPrimaryAddress = in.readLine();
 
 				Customer newCustomer = new Customer(customerFullName,pass,newUserEmail,newUserDOB,newUserPrimaryAddress);
-				this.bank.getAccounts().put();
+				out.println("Create user name: ");
+				String newUserName = in.readLine();
+				this.bank.getAccounts().put(newUserName,newCustomer);
+				out.println(this.bank.getAccounts());
 			} else {
 				String invalid = "Invalid";
 				String invalidUsername = "Invalid username";

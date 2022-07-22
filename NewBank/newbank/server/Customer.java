@@ -20,6 +20,7 @@ public class Customer {
 		this.fullName = fullName;
 		this.address = address;
 		this.dateOfBirth = dateOfBirth;
+
 	}
 
 	/* Loop through accounts names converting to string
@@ -64,7 +65,7 @@ public class Customer {
 	public String getStoredPassword() {
 	    return storedPassword;
 	}
-	public static boolean isPasswordValid(string password){
+	public static boolean isPasswordValid(String password){
 		int minimumPasswordLength = 8;
 		int passwordLength = password.length();
 
@@ -94,10 +95,14 @@ public class Customer {
                 
 		if(isPasswordValid){
 			System.out.println("\nThe Password is Strong.");
-		}{
-			else
+		}
+		else{
                         System.out.println("\nThe Password is Weak.");
 		}
 		return isPasswordValid;
+	}
+
+	public String toString(){
+		 return "Customer: \n Full name: "+this.fullName+"\n Address: "+this.address+"\n Email: "+this.email;
 	}
 }
