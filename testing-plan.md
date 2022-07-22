@@ -17,7 +17,7 @@ Exploratory testing has some problems as well, it is manual and easy to miss som
 It is also time consuming to manually check every change when developing. It is important to have automated
 tests as well as exploratory testing.
 
-**Team Guidance** - make sure to do some manual exploratory testing every feature you developer
+**Team Guidance** - make sure to do some manual exploratory testing every feature you develop
 
 ## Unit Testing
 Unit tests help developers verify the code behaves as expected. Unit tests are run by developers when coding using the IDE
@@ -26,7 +26,7 @@ and automatically using software like Jenkins. In Java, `junit` is the most comm
 **Team Guidance** Make sure to write some tests for every feature
 
 ## End to End testing
-Unit tests are for testing classes, End to End (E2E) tests verify the whole system works together. E2E tests are similar to unit tests and often use `junit` as well. Instead of testing a single class, the E2E test will try behaving like a user would, running the new bank server and client then sending some commands to make sure it is working. E2E tests are often slower and take longer to developer compared to unit tests.
+Unit tests are for testing classes, End to End (E2E) tests verify the whole system works together. E2E tests are similar to unit tests and often use `junit` as well. Instead of testing a single class, the E2E test will try behaving like a user would, running the new bank server and client then sending some commands to make sure it is working. E2E tests are often slower and take longer to develop compared to unit tests.
 
 **Team Guidance** make sure the system has some E2E tests 
 
