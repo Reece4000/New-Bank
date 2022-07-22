@@ -31,7 +31,14 @@ Unit tests are for testing classes, End to End (E2E) tests verify the whole syst
 **Team Guidance** make sure the system has some E2E tests 
 
 ## Test coverage
-It is important to know how well code is tested. Code coverage tools can measure what % of the code is tested. In the IDE there is an option to "Run code with coverage" to see this report. Google recommend 75% as a good code coverage https://testing.googleblog.com/2020/08/code-coverage-best-practices.html
+It is important to know how well code is tested. Code coverage tools can measure what % of the code is tested. In the IDE there is an option to "Run code with coverage" to see this report. Google recommend 75% of lines of code as a good code coverage https://testing.googleblog.com/2020/08/code-coverage-best-practices.html
 
-**Team Guidance** check code coverage in IDE using "Run with Coverage" and aim for 75% coverage 
+**Team Guidance** check code coverage in IDE using "Run with Coverage" and aim for 75% coverage
+
+These screenshots show how to view coverage in IntelliJ IDE;
+
+![](images/coverage-1.png)
+![](images/coverage-2.png)
+![](images/coverage-3.png)
+
 
