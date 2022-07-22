@@ -1,7 +1,6 @@
 package newbank.server;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class Customer {
 	
@@ -55,7 +54,7 @@ public class Customer {
 	public String getStoredPassword() {
 	    return storedPassword;
 	}
-	public static boolean isPasswordValid(string password){
+	public static boolean isPasswordValid(String password){
 		int minimumPasswordLength = 8;
 		int passwordLength = password.length();
 
@@ -85,9 +84,8 @@ public class Customer {
                 
 		if(isPasswordValid){
 			System.out.println("\nThe Password is Strong.");
-		}{
-			else
-                        System.out.println("\nThe Password is Weak.");
+		}else{
+			System.out.println("\nThe Password is Weak.");
 		}
 		return isPasswordValid;
 	}
