@@ -8,9 +8,18 @@ public class Customer {
 	private ArrayList<Account> accounts;
 
 	public String storedPassword;
-	public Customer(String password) {
+	String email;
+	String fullName;
+	String address;
+	String dateOfBirth;
+
+	public Customer(String fullName, String password, String email, String dateOfBirth, String address) {
 		accounts = new ArrayList<>();
 		storedPassword = password;
+		this.email = email;
+		this.fullName = fullName;
+		this.address = address;
+		this.dateOfBirth = dateOfBirth;
 	}
 
 	/* Loop through accounts names converting to string
