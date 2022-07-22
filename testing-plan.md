@@ -6,7 +6,7 @@ If the code doesn't behave correctly then customers could lose money and cause s
 To make sure the code works, it is vital to test it.
 
 New Bank is developed using Agile and there will be fast development with many changes. It is important
-for developers to know
+for developers to follow a testing plan and make sure code is well tested. 
 
 ## Exploratory Testing
 Testing can be done manually by developers and this is an important step, known as exploratory testing.
