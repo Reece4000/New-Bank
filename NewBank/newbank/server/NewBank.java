@@ -20,19 +20,19 @@ public class NewBank {
 //	addTestData();
 	}
 	
-/*private void addTestData() {
-		Customer bhagy = new Customer("bhag");
+private void addTestData() {
+		Customer bhagy = new Customer("bhag","Baara Bhagy", "bagh219@outlook.com","08.07.1990","18 Sussex Pl, Tyburnia, London, W2 2TP");
 		bhagy.addAccount(new Account("Main", 1000.0));
 		customers.put("Bhagy", bhagy);
 		
-		Customer christina = new Customer("christi2000");
+		Customer christina = new Customer("christi2000","=#neNice8", "chistina1994@hotmai.com", "23.06.1983", "400 Oxford St, London W1A 1AB, Reino Unido");
 		christina.addAccount(new Account("Savings", 1500.0));
 		customers.put("Christina", christina);
-		
-		Customer john = new Customer("John2022");
+
+		Customer john = new Customer("John2022", "John Brewster", "John.Br@gmail.com","05.01.1960","Berkeley Square House, Berkeley Square, London W1J 6BE");
 		john.addAccount(new Account("Checking", 250.0));
 		customers.put("John", john);
-	}*/
+	}
 	public static NewBank getBank() {
 		return bank;
 	}

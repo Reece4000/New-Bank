@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.text.SimpleDateFormat;
 
 public class NewBankClientHandler extends Thread {
 
@@ -25,7 +26,7 @@ public class NewBankClientHandler extends Thread {
 		try {
 			out.println("Would you like to create a new user? (y/n)");
 			createAccount = in.readLine();
-			if (createAccount.equals("y")) {
+			if (createAccount.equals("y")|| createAccount.equals("Y")) {
 				out.println("please enter your full name");
 				String customerFullName = in.readLine();
 
@@ -33,16 +34,25 @@ public class NewBankClientHandler extends Thread {
 				//Customer crear un customer, con un metodo   customer.assignPassword   por decir algo. este metodo sera creado en la clase customer."
 				out.println("Enter password :");
 				String pass = in.readLine();
-				if (pass.matches(".*[0-9]{1,}.*") && pass.matches(".*[=%&*?_@#$]{1,}.*") && pass.length() >= 6 && pass.length() <= 20) {
-					out.println("password updated");
-				} else {
+				while (!pass. matches("^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\\d)(?=.*[!=#$%&? \"]).*$")){
 					out.println("It is not a valid password, please input a different password");
+					pass = in.readLine();
 				}
 				out.println("please enter a contact email");
 				String newUserEmail = in.readLine();
-				out.println("please enter your date of birth (dd mmm yyyy)");
+				while(!newUserEmail.matches("^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")){
+					out.println("It is not a valid email, please re-check your input");
+					newUserEmail = in.readLine();
+				}
+
+
+				out.println("please enter your date of birth (dd.mm.yyyy)");
 				String newUserDOB = in.readLine();
-				out.println("please enter your primary address");
+				while(!newUserDOB.matches("^(?:0[1-9]|[12]\\d|3[01])([\\/.-])(?:0[1-9]|1[012])\\1(?:19|20)\\d\\d$" )){
+					out.println("It is not a valid date, please re-check your input and remember to use . in-between dates");
+					newUserDOB = in.readLine();
+				}
+				out.println("please enter your primary address, (street number, street, city, zipcode");
 				String newUserPrimaryAddress = in.readLine();
 
 				Customer newCustomer = new Customer(customerFullName,pass,newUserEmail,newUserDOB,newUserPrimaryAddress);
