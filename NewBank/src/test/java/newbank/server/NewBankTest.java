@@ -1,7 +1,10 @@
-package newbank.server;
+package src.test.java.newbank.server;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import src.main.java.newbank.server.CustomerID;
+import src.main.java.newbank.server.DefaultCustomers;
+import src.main.java.newbank.server.NewBank;
 
 
 class NewBankTest {

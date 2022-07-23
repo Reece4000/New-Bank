@@ -1,4 +1,4 @@
-package newbank.client;
+package src.main.java.newbank.client;
 
 import java.io.BufferedReader;
 import java.io.IOException;
