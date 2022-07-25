@@ -26,7 +26,7 @@ public class NewBankClientHandler extends Thread {
 		try {
 			out.println("Would you like to create a new user? (y/n)");
 			createAccount = in.readLine();
-			if (createAccount.equals("y")|| createAccount.equals("Y")) {
+			while (createAccount.equals("y")|| createAccount.equals("Y")) {
 				out.println("please enter your full name");
 				String customerFullName = in.readLine();
 
@@ -45,7 +45,6 @@ public class NewBankClientHandler extends Thread {
 					newUserEmail = in.readLine();
 				}
 
-
 				out.println("please enter your date of birth (dd.mm.yyyy)");
 				String newUserDOB = in.readLine();
 				while(!newUserDOB.matches("^(?:0[1-9]|[12]\\d|3[01])([\\/.-])(?:0[1-9]|1[012])\\1(?:19|20)\\d\\d$" )){
@@ -60,7 +59,9 @@ public class NewBankClientHandler extends Thread {
 				String newUserName = in.readLine();
 				this.bank.getAccounts().put(newUserName,newCustomer);
 				out.println(this.bank.getAccounts());
-			} else {
+				out.println("Registration successfull, please enter Login username ");
+				createAccount = "n";
+			} if (!createAccount.equals("y")) {
 				String invalid = "Invalid";
 				String invalidUsername = "Invalid username";
 				// ask for user name
