@@ -149,5 +149,7 @@ public class NewBank {
 	private String showMyAccounts(CustomerID customer) {
 		return (customers.get(customer.getKey())).accountsToString();
 	}
-
+	public HashMap<String,Customer> getAccounts(){
+		return this.customers;
+	}
 }
