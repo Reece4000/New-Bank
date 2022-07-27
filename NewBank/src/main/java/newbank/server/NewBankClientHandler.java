@@ -43,7 +43,8 @@ public class NewBankClientHandler extends Thread{
 //Customer crear un customer, con un metodo   customer.assignPassword   por decir algo. este metodo sera creado en la clase customer."
 				out.println("Enter password :");
 				String pass = in.readLine();
-				while (!pass. matches("^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\\d)(?=.*[!=#$%&? \"]).*$")){
+
+				while (!Customer.isPasswordValid(pass)){
 					out.println("It is not a valid password, please input a different password");
 					pass = in.readLine();
 				}
@@ -67,7 +68,6 @@ public class NewBankClientHandler extends Thread{
 				out.println("Create user name: ");
 				String newUserName = in.readLine();
 				this.bank.getAccounts().put(newUserName,newCustomer);
-				out.println(this.bank.getAccounts());
 				out.println("Registration successfull, please enter Login username ");
 				createAccount = "n";
 			} if (!createAccount.equals("y")) {
