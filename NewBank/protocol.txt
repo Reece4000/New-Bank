@@ -15,12 +15,8 @@ e.g. MOVE 100 Main Savings
 Returns SUCCESS or FAIL
 
 PAY <Amount> <FromAccount> <Person/Company> <ToAccount>
-e.g. PAY John 100
-Returns SUCCESS or FAIL
-
-// previous style
-PAY <Person/Company> <Amount>
 e.g. PAY 100 Main Christina Savings
+Returns SUCCESS or FAIL
 
 --------------------------------
 List of proposed requirements 
