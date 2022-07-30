@@ -17,7 +17,7 @@ public class DefaultCustomers {
                 String accountName = values[2];
                 String customerID = values[0];
                 double openingBalance = Double.parseDouble(values[3]);
-                Customer customer = new Customer(password);
+                Customer customer = new Customer("fullName", password, "String email", "String dateOfBirth", "String address");
                 customer.addAccount(new Account(accountName, openingBalance));
                 customers.put(customerID, customer);
             }
