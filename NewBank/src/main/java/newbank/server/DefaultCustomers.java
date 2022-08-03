@@ -1,0 +1,29 @@
+package newbank.server;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+
+public class DefaultCustomers {
+
+    public static HashMap<String, Customer> create() {
+        HashMap<String, Customer> customers = new HashMap<>();
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(DefaultCustomers.class.getResourceAsStream("default-customers.txt")))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] values = line.split(",");
+                String password = values[1];
+                String accountName = values[2];
+                String customerID = values[0];
+                double openingBalance = Double.parseDouble(values[3]);
+                Customer customer = new Customer("fullName", password, "String email", "String dateOfBirth", "String address");
+                customer.addAccount(new Account(accountName, openingBalance));
+                customers.put(customerID, customer);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return customers;
+    }
+}
