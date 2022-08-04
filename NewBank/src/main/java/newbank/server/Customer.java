@@ -27,10 +27,9 @@ public class Customer {
 		this.fullName = fullName;
 		this.address = address;
 		this.dateOfBirth = dateOfBirth;
-		//this.customerID = customerID;
 	}
 
-	public static boolean attemptWriteCustomerData(final Customer newCustomer, final String newCustomerData) {
+	public static boolean writeCustomerData(final Customer newCustomer, final String newCustomerData) {
 		try {
 			Writer customerList = new BufferedWriter(new FileWriter("NewBank/src/main/java/newbank/server/customers.txt", true));
 			customerList.append(newCustomerData + "\n");

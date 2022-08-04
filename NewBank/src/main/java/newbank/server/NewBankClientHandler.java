@@ -74,18 +74,18 @@ public class NewBankClientHandler extends Thread {
 
 				out.println("Create a user name: ");
 				String newUserName = in.readLine();
-				//String customerID = CustomerID.generateCustomerID();
 				Customer newCustomer = new Customer(customerFullName, newUserName, pass, newUserEmail, newUserDOB, newUserAddress);
 
-				if (Customer.attemptWriteCustomerData(newCustomer, customerFullName + "/" +
+				if (Customer.writeCustomerData(newCustomer, customerFullName + "/" +
 						newUserName + "/" + pass + "/" + newUserEmail + "/" + newUserDOB + "/" + newUserAddress +
 						"/" + "Main" + "/" + "0.00")) {
 					this.bank.getAccounts().put(newUserName, newCustomer);
 					out.println("Registration successful!");
 					isRegistered = true;
 					Customer.create();
-				} else
+				} else {
 					out.println("An error occurred - new customer details have not been stored. Please try again.");
+				}
 			} catch (IOException e) {
 				out.println("Input error!");
 				continue;
