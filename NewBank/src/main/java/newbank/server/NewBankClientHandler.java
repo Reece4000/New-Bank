@@ -31,14 +31,6 @@ public class NewBankClientHandler extends Thread {
 		out = new PrintWriter(s.getOutputStream(), true);
 	}
 
-  /*
-  Create the register and login methods within the clienthandler class
-  Create a method to write customer data to the txt file
-  Amend default customers list and java class to include additional fields
-  Add new command to show details of the customer - SHOWCUSTOMERINFO
-   */
-
-
 	private boolean newRegistration() { //encapsulate new customer registration as a separate method
 		boolean isRegistered = false;
 		while (!isRegistered) {
