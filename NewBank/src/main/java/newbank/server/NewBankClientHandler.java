@@ -149,27 +149,31 @@ public class NewBankClientHandler extends Thread {
 								"2 - Enter command(s)\n" +
 								"3 - Log out\n" +
 								"4 - Exit NewBank");
-						int choice = Integer.parseInt(in.readLine());
-						if (choice == 1) {
-							out.println(helpMessage);
-							out.println("Press Enter to continue...");
-							in.readLine();
-						} else if (choice == 2) {
-							out.println("Enter command: ");
-							String request = in.readLine();
-							out.println("Request from " + customer.getKey());
-							String response = bank.processRequest(customer, request);
-							out.println(response);
-						} else if (choice == 3) {
-							signInStatus = 0;
-							//out.println("Log out functionality to be implemented");
-						} else if (choice == 4) {
-							out.println("Thank you for using New Bank!");
-							System.exit(0); //need to implement a proper exit
-
-						} else
+						try {
+							int choice = Integer.parseInt(in.readLine());
+							if (choice == 1) {
+								out.println(helpMessage);
+								out.println("Press Enter to continue...");
+								in.readLine();
+							} else if (choice == 2) {
+								out.println("Enter command: ");
+								String request = in.readLine();
+								out.println("Request from " + customer.getKey());
+								String response = bank.processRequest(customer, request);
+								out.println(response);
+							} else if (choice == 3) {
+								signInStatus = 0;
+								//out.println("Log out functionality to be implemented");
+							} else if (choice == 4) {
+								out.println("Thank you for using New Bank!");
+								System.exit(0); //need to implement a proper exit
+							} else {
+								out.println("Invalid input!");
+							}
+						} catch(NumberFormatException e) {
 							out.println("Invalid input!");
 					}
+				}
 				} else {
 					out.println(customer.getKey());
 					out.println("Log In Failed");
