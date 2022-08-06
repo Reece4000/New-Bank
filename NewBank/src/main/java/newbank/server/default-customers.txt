@@ -1,3 +1,0 @@
-Bhagy,bhag,Main,1000.0
-Christina,christi2000,Savings,1500.0
-John,John2022,Checking,250.0
