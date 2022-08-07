@@ -1,4 +1,4 @@
 Bhagy Patil/Bhagy/bhag/bhagy21@yahoo.com/25.12.1981/1, Test Street, Testville, TE57 1AA/Main/1000.0
 Christina Keating/Christina/christi2000/christi2134@gmail.com/26.12.1981/2, Test Street, Testville, TE57 1AB/Savings/1500.0
 John Benardis/John/John2022/John356@bath.ac.uk/27.12.1981/3, Test Street, Testville, TE57 1AC/Checking/250.0
-TestCustomer/TestCustomer1/TestPass1*/test@test.co.uk/01.01.2000/01, Testing st, Testville, TE5T ING/Main/0.00
+TestCustomer/TestCustomer1/TestPass1*/test@test.co.uk/01.01.2000/01, Testing st, Testville, TE5T ING/Test/0.00

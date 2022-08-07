@@ -18,6 +18,10 @@ PAY <Amount> <FromAccount> <Person/Company> <ToAccount>
 e.g. PAY 100 Main Christina Savings
 Returns SUCCESS or FAIL
 
+SWITCHMAIN <NewMainAccount>
+e.g. SWITCHMAIN Savings
+Returns SUCCESS or FAIL
+
 --------------------------------
 List of proposed requirements 
 FR1	The system shall allow new customers to register
