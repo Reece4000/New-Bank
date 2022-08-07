@@ -18,6 +18,10 @@ public class Account {
 		return this.accountName;
 	}
 
+	public void renameAccount(String newName) {
+		this.accountName = newName;
+	}
+
 	public double getBalance() {
 		return this.accountBalance;
 	}

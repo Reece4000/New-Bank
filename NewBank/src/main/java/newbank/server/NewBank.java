@@ -19,6 +19,7 @@ public class NewBank {
 	final int REMOVEACCOUNT = 2;
 	final int MOVE = 4;
 	final int PAY = 5;
+	final int SWITCHMAIN = 2;
 
 	private NewBank() {
 		customers = new HashMap<>();
@@ -53,10 +54,28 @@ public class NewBank {
 				case "REMOVEACCOUNT" : return deleteAccount(customer, commands);
 				case "MOVE" : return moveFunds(customer, commands);
 				case "PAY" : return moveFunds(customer, commands);
+				case "SWITCHMAIN" : return switchMain(customer, commands);
 				default : return "FAIL";
 			}
 		}
 		return "FAIL";
+	}
+	private String switchMain(CustomerID customer, String[] command) {
+		String result = "FAIL";
+		if (checkCommandSize(command, SWITCHMAIN)) {
+			String newMain = command[1];
+			System.out.println("checkcommandsize");
+			Account mainAcc = customers.get(customer.getKey()).getAccount("Main");
+			if (mainAcc != null) {
+				mainAcc.renameAccount("Old Main");
+			}
+			Account newMainAcc = customers.get(customer.getKey()).getAccount(newMain);
+			if (newMainAcc != null) {
+				newMainAcc.renameAccount("Main");
+			}
+			result = "SUCCESS";
+		}
+		return result;
 	}
 
 	private String createNewAccount(CustomerID customer, String[] command) {

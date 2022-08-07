@@ -22,7 +22,10 @@ public class NewBankClientHandler extends Thread {
 			"accounts (e.g. 'MOVE 100.00 Main Savings')\n" +
 			"PAY <Amount> <FromAccount> <Person/Company> <ToAccount> - " +
 			"Moves funds from one of your accounts to the account of " +
-			"another user (e.g. 'PAY 100.00 Main Christina Savings')";
+			"another user (e.g. 'PAY 100.00 Main Christina Savings')\n" +
+			"SWITCHMAINACCOUNT <NewMainAccount> - Allows customers to " +
+			"assign one of their existing accounts as their main account " +
+			"(e.g. 'SWITCHMAINACCOUNT savings')";
 
 
 	public NewBankClientHandler(Socket s) throws IOException {
@@ -91,13 +94,13 @@ public class NewBankClientHandler extends Thread {
 		try {
 			String invalid = "Invalid";
 			String invalidUsername = "Invalid username";
-			// ask for user name
-			out.println("Enter Username");
-			String userName = in.readLine();
-			boolean isLoggedIn = false;
+			boolean isAuthenticated = false;
 			int attempts = 0;
-			// ask for password
-			while (!isLoggedIn && attempts < 5) {
+			while (!isAuthenticated && attempts < 5) {
+				// ask for user name
+				out.println("Enter Username");
+				String userName = in.readLine();
+				// ask for password
 				out.println("Enter Password");
 				String password = in.readLine();
 				out.println("Checking Details...");
@@ -106,14 +109,12 @@ public class NewBankClientHandler extends Thread {
 				attempts++;
 				if (!customer.getKey().contains(invalid)) {
 					return customer;
-				} else if (attempts == 5) {
-					out.println("Too many attempts!");
-					// exit program
-					return null;
-				} else if (customer.getKey().contains(invalidUsername)) {
-					return null;
+				} else {
+					out.println("Log in details not recognised - please try again.");
 				}
 			}
+			out.println("Too many attempts!");
+			return null;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -123,27 +124,29 @@ public class NewBankClientHandler extends Thread {
 	public void run() {
 		// keep getting requests from the client and processing them
 		CustomerID customer = null;
-		int signInStatus = 0;
+		int userChoice = 0; // 0 = init ; 1 = register ; 2 = log in
+		boolean isLoggedIn = false;
 		try {
-			while (signInStatus == 0) {
+			while (userChoice == 0) {
 			out.println("What would you like to do? \n1 - Register\n2 - Log in");
-				signInStatus = Integer.parseInt(in.readLine());
-			while (signInStatus == 1) {
+				userChoice = Integer.parseInt(in.readLine());
+			while (userChoice == 1) {
 				if(newRegistration()) {
-					signInStatus = 0;
+					userChoice = 0;
 					}
 				}
 			}
-			if (signInStatus == 2) {
+			if (userChoice == 2) {
 				customer = logIn();
 				if (customer == null) {
 					out.println("Log in failed.");
-					signInStatus = 0;
+					userChoice = 0;
 				} else {
+					isLoggedIn = true;
 					out.println("\nLog In Successful for " + customer.getKey() + ". What do you want to do?");
 				}
 				// if the user is authenticated then accept & process requests
-					while (signInStatus == 2) {
+					while (isLoggedIn) {
 						//display options to the user
 						out.println("1 - View the list of available commands\n" +
 								"2 - Enter command(s)\n" +
@@ -162,11 +165,12 @@ public class NewBankClientHandler extends Thread {
 								String response = bank.processRequest(customer, request);
 								out.println(response);
 							} else if (choice == 3) {
-								signInStatus = 0;
-								//out.println("Log out functionality to be implemented");
+								out.println("Have a nice day, " + customer.getKey() + "!\n");
+								userChoice = 0;
+								run();
 							} else if (choice == 4) {
 								out.println("Thank you for using New Bank!");
-								System.exit(0); //need to implement a proper exit
+								out.close();
 							} else {
 								out.println("Invalid input!");
 							}

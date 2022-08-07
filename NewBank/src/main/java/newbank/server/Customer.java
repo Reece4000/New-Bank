@@ -74,7 +74,7 @@ public class Customer {
 		String delimiter = "";
 
 		if(accounts.size()>1){
-			delimiter = Character.toString((char)124);
+			delimiter = Character.toString((char)124); // 124 = | (vertical bar)
 		}
 
 		for(Account a : accounts) {
