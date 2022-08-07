@@ -64,7 +64,6 @@ public class NewBank {
 		String result = "FAIL";
 		if (checkCommandSize(command, SWITCHMAIN)) {
 			String newMain = command[1];
-			System.out.println("checkcommandsize");
 			Account mainAcc = customers.get(customer.getKey()).getAccount("Main");
 			if (mainAcc != null) {
 				mainAcc.renameAccount("Old Main");
